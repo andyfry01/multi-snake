@@ -192,12 +192,17 @@ module.exports = {
 			}
 		});
 
-		console.log("Connected: " + socket.id);
+		console.log("Connected: " + socket.id)
 	},
 
 	stat: (req, res) => {
 		storage.get('games', 0).then(games => {
-			res.send(`<h1>Games played: ${games}</h1>`);
+			storage.set('test', 'hi andy')
+			storage.get('test').then(() => {
+				storage.get('test').then(test => res.send(`<h1>${test}</h1>`))
+
+				// res.send(`<h1>Games played: ${storage.get('test').then(console.log)}</h1><p></p>`);
+			})
 		});
 	}
 

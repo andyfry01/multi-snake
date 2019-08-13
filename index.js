@@ -50,6 +50,7 @@ function createZip() {
 app.set('port', (process.env.PORT || 3000))
     .set('storage', process.env.DATABASE_URL || 'sqlite:storage.sqlite')
     .get('/server-info', (req, res) => {
+        console.log(process.env)
         let limit = 13312,
             storageSize = storage.interface.size();
         res.set('Content-Type', 'text/plain').send([
